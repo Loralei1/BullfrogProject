@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class CausticsGenerator : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public float fps = 20.0f;
+    public Texture2D[] frames;
+
+    private int frameIndex;
+    private Projector projector;
+
     void Start()
     {
-        
+        projector = GetComponent<Projector>();
+        NextFrame();
+        InvokeRepeating("NextFrame", 1 / fps, 1 / fps);
     }
 
-    // Update is called once per frame
-    void Update()
+    void NextFrame()
     {
-        
+        projector.material.SetTexture("_ShadowTex", frames[frameIndex]);
+        frameIndex = (frameIndex + 1) % frames.Length;
     }
 }
