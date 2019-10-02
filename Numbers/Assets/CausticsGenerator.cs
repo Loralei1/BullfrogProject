@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CausticsGenerator : MonoBehaviour
 {
-    public float fps = 20.0f;
+    public float fps = 12.0f;
     public Texture2D[] frames;
 
     private int frameIndex;
